@@ -2,6 +2,16 @@ import React from "react";
 import { Link } from "react-router";
 
 const Register = () => {
+  const handleRegister = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photoURL = form.photoURL.value;
+    const password = form.password.value;
+    console.log({ name, email, photoURL, password });
+  };
   return (
     <div className="flex justify-center min-h-screen items-center">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl ">
@@ -9,25 +19,51 @@ const Register = () => {
           <h1 className="font-semibold text-2xl text-center mb-10 mt-5">
             Register your account
           </h1>
-          <fieldset className="fieldset">
+          <form onSubmit={handleRegister} className="fieldset">
             {/* Name */}
             <label className="label">Name</label>
-            <input type="name" className="input" placeholder="Name" />
+            <input
+              name="name"
+              type="name"
+              className="input"
+              placeholder="Name"
+              required
+            />
 
             {/* PhotUrl */}
             <label className="label">Photo URL</label>
-            <input type="name" className="input" placeholder="Photo URL" />
+            <input
+              name="photoURL"
+              type="name"
+              className="input"
+              placeholder="Photo URL"
+              required
+            />
 
             {/* Email */}
             <label className="label">Email</label>
-            <input type="email" className="input" placeholder="Email" />
+            <input
+              name="email"
+              type="email"
+              className="input"
+              placeholder="Email"
+              required
+            />
 
             {/* password */}
             <label className="label">Password</label>
-            <input type="password" className="input" placeholder="Password" />
+            <input
+              name="password"
+              type="password"
+              className="input"
+              placeholder="Password"
+              required
+            />
 
-            <button className="btn btn-neutral mt-4">Register</button>
-          </fieldset>
+            <button type="submit" className="btn btn-neutral mt-4">
+              Register
+            </button>
+          </form>
 
           <p className="mt-3 font-semibold text-center">
             Already Have An Account ?{" "}
