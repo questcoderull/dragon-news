@@ -1,7 +1,10 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
+  const { createUser, setUser } = use(AuthContext);
+
   const handleRegister = (e) => {
     e.preventDefault();
 
@@ -10,7 +13,19 @@ const Register = () => {
     const email = form.email.value;
     const photoURL = form.photoURL.value;
     const password = form.password.value;
-    console.log({ name, email, photoURL, password });
+    // console.log({ name, email, photoURL, password });
+
+    // calling the function for creating a new user.
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setUser(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
   return (
     <div className="flex justify-center min-h-screen items-center">
