@@ -15,9 +15,15 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="flex justify-between items-center">
-      <div className="border border-secondary py-2 px-5 rounded hover:text-white hover:bg-secondary transition">
-        {user && user.email}
+    <div className="flex justify-between items-center mt-10  w-11/12 mx-auto">
+      <div>
+        {user ? (
+          <div className="border border-secondary py-2 px-5 rounded hover:text-white hover:bg-secondary transition">
+            {user.email}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <div className="nav flex gap-5 text-accent">
         <NavLink to="/">Home</NavLink>
